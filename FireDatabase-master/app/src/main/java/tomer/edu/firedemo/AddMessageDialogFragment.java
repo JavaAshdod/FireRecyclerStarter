@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import tomer.edu.firedemo.models.Message;
+import tomer.edu.firedemo.models.Todo;
 
 
 /**
@@ -41,22 +41,22 @@ public class AddMessageDialogFragment extends DialogFragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveMessageToFireBase();
+                saveTodoToFirebase();
             }
         });
         return v;
     }
 
-    private void saveMessageToFireBase() {
+    private void saveTodoToFirebase() {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
         String uid = currentUser.getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Messages").child(uid);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Todos").child(uid);
 
-        Message message = new Message(etTitle.getText().toString(), etMessage.getText().toString());
+        Todo todo = new Todo(etTitle.getText().toString(), etMessage.getText().toString());
 
-        ref.push().setValue(message);
+        ref.push().setValue(todo);
         dismiss();
     }
 }

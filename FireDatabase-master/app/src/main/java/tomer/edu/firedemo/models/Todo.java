@@ -3,16 +3,16 @@ package tomer.edu.firedemo.models;
 /**
  * Created by stud27 on 20/07/16.
  */
-public class Message {
+public class Todo {
     private String title;
     private String content;
 
-    public Message() {
+    public Todo() {
     }
 
 
 
-    public Message(String title, String content) {
+    public Todo(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -36,7 +36,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "Todo{" +
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
