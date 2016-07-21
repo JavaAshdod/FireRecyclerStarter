@@ -26,7 +26,8 @@ public class TodosRecyclerAdapter extends FirebaseRecyclerAdapter<Todo , TodosRe
         viewHolder.tvDescription.setText(model.getContent());
     }
 
-    public class TodosViewHolder extends RecyclerView.ViewHolder{
+    //TODO: make it static
+    public static class TodosViewHolder extends RecyclerView.ViewHolder{
         TextView tvTitle;
         TextView tvDescription;
 
