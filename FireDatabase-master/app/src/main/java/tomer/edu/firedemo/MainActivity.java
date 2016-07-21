@@ -51,13 +51,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRecycler() {
+        //find View By Id:
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.todosRecycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Get a reference to our table:
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String uid = currentUser.getUid();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Todos").child(uid);
-        recyclerView.setAdapter(new TodosRecyclerAdapter(ref));
+
+        //init a new instance of the adapter
+        TodosRecyclerAdapter adapter = new TodosRecyclerAdapter(ref);
+
+        //set the adapter on the recyclerView
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
